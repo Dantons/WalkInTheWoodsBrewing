@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events — Walk in the Woods Brewing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #1c1c1c; line-height: 1.6; background: #faf9f6; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+    .nav { background: #1a2e1a; padding: 16px 0; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'Playfair Display', serif; color: #c8a951; font-size: 20px; font-weight: 700; }
+    .nav-logo span { color: #d4d4c8; font-weight: 400; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: #b8b8a8; font-size: 15px; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #c8a951; }
+    .page-hero { background: linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 100%); color: #fff; padding: 64px 24px; text-align: center; }
+    .page-hero h1 { font-size: 44px; margin-bottom: 12px; }
+    .page-hero p { font-size: 18px; color: #b8c8a8; max-width: 650px; margin: 0 auto; }
+    .section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+    .section-alt { background: #f0efe8; }
+
+    .events-intro { text-align: center; margin-bottom: 60px; }
+    .events-intro h2 { font-size: 32px; margin-bottom: 12px; }
+    .events-intro p { font-size: 16px; color: #666; max-width: 650px; margin: 0 auto; line-height: 1.8; }
+
+    .event-card { background: #fff; border: 1px solid #e0ddd4; border-radius: 8px; overflow: hidden; margin-bottom: 32px; display: grid; grid-template-columns: 200px 1fr; }
+    .event-date-block { background: #1a2e1a; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px; text-align: center; }
+    .event-month { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #c8a951; }
+    .event-day { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 800; line-height: 1; }
+    .event-weekday { font-size: 14px; color: #b8c8a8; margin-top: 4px; }
+    .event-body { padding: 32px; }
+    .event-tag { display: inline-block; background: #f0efe8; color: #2d4a2d; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-bottom: 12px; }
+    .event-body h3 { font-size: 24px; margin-bottom: 8px; }
+    .event-time { font-size: 14px; color: #c8a951; font-weight: 600; margin-bottom: 12px; }
+    .event-body p { font-size: 15px; color: #555; line-height: 1.8; margin-bottom: 12px; }
+    .event-details { font-size: 14px; color: #888; }
+
+    .recurring-section h2 { font-size: 28px; margin-bottom: 12px; }
+    .recurring-section > p { font-size: 16px; color: #555; margin-bottom: 32px; line-height: 1.8; }
+    .recurring-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .recurring-card { background: #fff; border: 1px solid #e0ddd4; border-radius: 8px; padding: 28px; }
+    .recurring-card h3 { font-size: 20px; margin-bottom: 8px; }
+    .recurring-when { font-size: 14px; color: #c8a951; font-weight: 600; margin-bottom: 12px; }
+    .recurring-card p { font-size: 14px; color: #666; line-height: 1.7; }
+
+    .private-section { margin-top: 64px; }
+    .private-section h2 { font-size: 28px; margin-bottom: 12px; }
+    .private-section > p { font-size: 16px; color: #555; margin-bottom: 24px; line-height: 1.8; }
+    .private-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+    .private-card { background: #1a2e1a; color: #fff; border-radius: 8px; padding: 28px; }
+    .private-card h3 { font-size: 18px; color: #c8a951; margin-bottom: 8px; }
+    .private-card p { font-size: 14px; color: #d4d4c8; line-height: 1.7; }
+    .private-card .capacity { font-size: 13px; color: #b8c8a8; margin-top: 12px; font-weight: 600; }
+
+    .community-section { margin-top: 64px; text-align: center; }
+    .community-section h2 { font-size: 28px; margin-bottom: 16px; }
+    .community-section p { font-size: 16px; color: #555; line-height: 1.8; max-width: 700px; margin: 0 auto 16px; }
+
+    .btn { display: inline-block; background: #c8a951; color: #1a2e1a; padding: 14px 32px; border-radius: 4px; font-weight: 700; font-size: 16px; transition: all 0.2s; border: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+    .btn:hover { background: #b89841; }
+    .cta-banner { background: linear-gradient(135deg, #1a2e1a, #2d4a2d); color: #fff; padding: 64px 24px; text-align: center; }
+    .cta-banner h2 { font-size: 32px; margin-bottom: 12px; }
+    .cta-banner p { font-size: 17px; color: #b8c8a8; margin-bottom: 28px; max-width: 550px; margin-left: auto; margin-right: auto; }
+    .footer { background: #0f1a0f; color: #777; padding: 32px 24px; text-align: center; font-size: 13px; }
+
+    @media (max-width: 768px) {
+      .event-card { grid-template-columns: 1fr; }
+      .event-date-block { padding: 20px; flex-direction: row; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Walk in the Woods <span>Brewing</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="beers.html">Our Beers</a>
+      <a href="visit.html">Visit Us</a>
+      <a href="about.html">Our Story</a>
+      <a href="events.html" class="active">Events</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <h1>Events & Happenings</h1>
+  <p>Live music, seasonal brew days, foraging walks, and community gatherings deep in the Cape Breton Highlands. Come for the beer, stay for the experience.</p>
+</section>
+
+<section class="section">
+
+  <div class="events-intro">
+    <h2>Upcoming Events</h2>
+    <p>Everything happens at the taproom unless noted otherwise. Most events are free — we'd rather fill the patio with good people than charge admission. Check back often or follow us on social media for last-minute additions.</p>
+  </div>
+
+  <div class="event-card">
+    <div class="event-date-block">
+      <div class="event-month">Apr</div>
+      <div class="event-day">5</div>
+      <div class="event-weekday">Saturday</div>
+    </div>
+    <div class="event-body">
+      <span class="event-tag">🎶 Live Music</span>
+      <h3>Live Music Saturdays Return</h3>
+      <div class="event-time">3:00 PM – 6:00 PM · Patio Stage</div>
+      <p>The Saturday live music series is back for the 2026 season. First up: The Harbour Collective, a Cape Breton folk trio who blend traditional fiddle with indie acoustic. Bring a blanket, grab a pint, and settle in under the spruce trees. Every Saturday through September, different local acts each week.</p>
+      <p>No cover charge. The fire pit will be running if the evening gets cool. Kids and dogs welcome as always. Food available from the kitchen until 6 PM.</p>
+      <div class="event-details">Free admission · All ages · Rain date: following Sunday</div>
+    </div>
+  </div>
+
+  <div class="event-card">
+    <div class="event-date-block">
+      <div class="event-month">Apr</div>
+      <div class="event-day">12</div>
+      <div class="event-weekday">Saturday</div>
+    </div>
+    <div class="event-body">
+      <span class="event-tag">🌿 Seasonal Brew</span>
+      <h3>Spring Foraging Brew Day</h3>
+      <div class="event-time">10:00 AM – 4:00 PM · Brewery & Grounds</div>
+      <p>Our most popular annual event. Join head brewer Emma for a morning guided walk through the property to harvest fresh spruce tips, wild herbs, and whatever else the spring has produced. After the walk, watch us brew a one-off seasonal ale with the foraged ingredients right in front of you.</p>
+      <p>You'll learn about wild ingredient identification, the brewing process from mash to boil, and how we incorporate foraged botanicals into beer recipes. The finished beer will be released 4 weeks later at the taproom — participants get a reserved 4-pack before it goes on sale.</p>
+      <p>Wear boots — the trails are muddy in April. We'll provide baskets, gloves, and clippers for the harvest. Lunch included: smoked meat sandwiches and a pint of your choice.</p>
+      <div class="event-details">$45 per person · Includes lunch + beer + reserved 4-pack · Limited to 20 spots · Book via contact page</div>
+    </div>
+  </div>
+
+  <div class="event-card">
+    <div class="event-date-block">
+      <div class="event-month">May</div>
+      <div class="event-day">3</div>
+      <div class="event-weekday">Saturday</div>
+    </div>
+    <div class="event-body">
+      <span class="event-tag">🍺 Beer Release</span>
+      <h3>Spruce Tip Saison Release Party</h3>
+      <div class="event-time">2:00 PM – 8:00 PM · Taproom & Patio</div>
+      <p>The most anticipated release of the year. Our Spruce Tip Saison — brewed with fresh tips harvested from the property in April — goes on tap and into cans for the first time this season. This is the beer that put Walk in the Woods on the map, and it only comes around once a year.</p>
+      <p>We'll have the saison pouring alongside a special cask-conditioned version dry-hopped with fresh spruce tips from the same harvest. Live music from local songwriter Meg Chicken from 4–7 PM. Wood-fired flatbreads and smoked meats available all afternoon.</p>
+      <p>Cans will be available for purchase at the taproom — limit 2 four-packs per person on release day. Online orders open the following Monday. Last year it sold out in 10 days.</p>
+      <div class="event-details">Free admission · First 50 arrivals get a free tasting glass · Cans $6.50 each</div>
+    </div>
+  </div>
+
+  <div class="event-card">
+    <div class="event-date-block">
+      <div class="event-month">May</div>
+      <div class="event-day">17</div>
+      <div class="event-weekday">Saturday</div>
+    </div>
+    <div class="event-body">
+      <span class="event-tag">🎓 Workshop</span>
+      <h3>Intro to Homebrewing Workshop</h3>
+      <div class="event-time">11:00 AM – 3:00 PM · Brewhouse</div>
+      <p>Always wanted to brew your own beer but don't know where to start? Emma walks you through the entire process — from grain selection and mashing to boiling, hopping, fermentation, and bottling. You'll brew a 20-litre batch of our Morning Fog Lager recipe on a homebrewing setup and take it home to ferment.</p>
+      <p>No experience needed. We provide all equipment, ingredients, and a homebrewing starter kit to take home. You'll leave knowing enough to brew your second batch on your own. Class is capped at 8 people so everyone gets hands-on time at each stage.</p>
+      <p>Includes a full flight tasting, lunch from the kitchen, and a detailed recipe booklet with 5 of our beginner-friendly recipes adapted for homebrewing.</p>
+      <div class="event-details">$95 per person · Includes all materials + homebrewing starter kit + lunch · Max 8 people</div>
+    </div>
+  </div>
+
+  <div class="event-card">
+    <div class="event-date-block">
+      <div class="event-month">Jun</div>
+      <div class="event-day">14</div>
+      <div class="event-weekday">Saturday</div>
+    </div>
+    <div class="event-body">
+      <span class="event-tag">🍖 Food & Beer</span>
+      <h3>Brewmaster's Dinner: Summer Solstice</h3>
+      <div class="event-time">6:00 PM – 10:00 PM · Taproom (Indoor)</div>
+      <p>A five-course dinner paired with five Walk in the Woods beers, prepared by guest chef Marcus Chicken from The Red Door in Baddeck. Each course is designed to complement the beer it's paired with — from a light ceviche with the Berry Bramble Sour to a braised short rib with the Deadfall Stout.</p>
+      <p>Emma introduces each beer pairing and shares the brewing story behind it. The dinner takes place inside the taproom at the long communal table, lit by candles and the last of the solstice light. This is the most intimate event we host all year — 24 seats, no exceptions.</p>
+      <div class="event-details">$125 per person · 5 courses + 5 beer pairings · 24 seats only · Advance booking required</div>
+    </div>
+  </div>
+
+  <hr style="border: none; border-top: 1px solid #e0ddd4; margin: 60px 0;">
+
+  <div class="recurring-section">
+    <h2>Every Week at the Taproom</h2>
+    <p>Not everything needs to be a special event. These are the things that happen every week, rain or shine, all season long. No booking required — just show up.</p>
+    <div class="recurring-grid">
+      <div class="recurring-card">
+        <h3>🎶 Live Music Saturdays</h3>
+        <div class="recurring-when">Every Saturday, 3–6 PM · May through September</div>
+        <p>Local musicians play the patio stage every Saturday afternoon. Folk, fiddle, acoustic, and the occasional sea shanty crew. Different act each week — follow us on social media for the lineup. No cover charge. Grab a pint and a seat by the stage.</p>
+      </div>
+      <div class="recurring-card">
+        <h3>🏭 Free Brewery Tours</h3>
+        <div class="recurring-when">Every Saturday, 1 PM & 3 PM · Year-round</div>
+        <p>Walk through the brewhouse, see the hopyard (in season), taste grain from the mash tun, and learn how spring water becomes beer. Tours last about 30 minutes and include a tasting of whatever's just come off the tank. No reservation needed — just show up at the bar.</p>
+      </div>
+      <div class="recurring-card">
+        <h3>🔥 Fire Pit Fridays</h3>
+        <div class="recurring-when">Every Friday, 5–8 PM · May through October</div>
+        <p>We light the fire pit as soon as the sun starts dropping. Bring a blanket if it's cool, grab a pint of Nightcap Porter, and watch the stars come out over the highlands. The kitchen stays open until 7 PM for flatbreads and smoked meats. Our favourite night of the week.</p>
+      </div>
+      <div class="recurring-card">
+        <h3>🌲 Trail Walks</h3>
+        <div class="recurring-when">Every Sunday, 11 AM · May through October</div>
+        <p>A casual 45-minute guided walk through the property trails. Learn about the trees, the hopyard, the spring, and the wildlife (we have a resident family of foxes). Ends at the taproom for a complimentary half-pint. Family-friendly. Dogs on leash welcome. Wear sturdy shoes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="private-section">
+    <h2>Private Events & Bookings</h2>
+    <p>The taproom and patio are available for private events — birthdays, rehearsal dinners, corporate team outings, or any excuse to gather good people in a beautiful setting. We handle the beer and the venue; you bring the guest list.</p>
+    <div class="private-grid">
+      <div class="private-card">
+        <h3>Taproom Buyout</h3>
+        <p>Exclusive use of the indoor taproom space with dedicated bartender, your choice of 4 beers on tap, and optional food packages from the kitchen.</p>
+        <div class="capacity">Capacity: 50 seated / 80 standing</div>
+      </div>
+      <div class="private-card">
+        <h3>Patio & Fire Pit</h3>
+        <p>The outdoor patio with fire pit, string lights, and the best sunset view in Cape Breton. Perfect for summer celebrations and casual gatherings.</p>
+        <div class="capacity">Capacity: 40 seated / 60 standing</div>
+      </div>
+      <div class="private-card">
+        <h3>Brewery Experience</h3>
+        <p>Private brewery tour + guided tasting for your group, followed by a reserved section in the taproom. Includes a take-home mixed 4-pack per guest.</p>
+        <div class="capacity">Capacity: 8–16 people</div>
+      </div>
+      <div class="private-card">
+        <h3>Brewmaster's Table</h3>
+        <p>Intimate dinner at the long communal table inside the brewhouse itself. 4-course meal with beer pairings, prepared by a local guest chef. Our most exclusive experience.</p>
+        <div class="capacity">Capacity: 12 people max</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="community-section">
+    <h2>Community Is Everything</h2>
+    <p>We're not just a brewery — we're a gathering place. From hosting fundraisers for the Baddeck volunteer fire department to sponsoring the local youth hockey team, we believe the best thing a business can do is give back to the community that supports it. If you're running a community event and need a venue or a donation, get in touch. We say yes more than we say no.</p>
+    <p>We also partner with local farms, artisans, and food producers whenever we can. The cheese board at the taproom features gouda from Foxhill Cheese House. The honey comes from a beekeeper three roads over. The smoked meats are from a butcher in Whycocomagh. When you spend money here, it stays in Cape Breton.</p>
+  </div>
+
+</section>
+
+<section class="cta-banner">
+  <h2>Want to Book an Event or Reserve a Spot?</h2>
+  <p>Reach out and we'll get back to you within 24 hours. Private events book up fast for summer — plan ahead.</p>
+  <a href="contact.html" class="btn">Get in Touch</a>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2026 Walk in the Woods Brewing Co. All rights reserved. | Please drink responsibly. You must be 19+ to purchase.</p>
+</footer>
+
+</body>
+</html>

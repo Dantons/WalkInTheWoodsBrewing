@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walk in the Woods Brewing — Craft Beer from the Cape Breton Highlands</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #1c1c1c; line-height: 1.6; background: #faf9f6; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+
+    /* Nav */
+    .nav { background: #1a2e1a; padding: 16px 0; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'Playfair Display', serif; color: #c8a951; font-size: 20px; font-weight: 700; }
+    .nav-logo span { color: #d4d4c8; font-weight: 400; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: #b8b8a8; font-size: 15px; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #c8a951; }
+
+    /* Hero */
+    .hero { background: linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 50%, #1a2e1a 100%); color: #fff; padding: 100px 24px 90px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><text y="50" font-size="80">🌲</text></svg>') repeat; opacity: 0.15; }
+    .hero-content { position: relative; z-index: 1; }
+    .hero h1 { font-size: 52px; font-weight: 800; margin-bottom: 16px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.15; }
+    .hero h2 { font-size: 22px; font-weight: 400; color: #b8c8a8; margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto; font-family: 'Inter', sans-serif; }
+    .hero p { font-size: 17px; color: #98a888; margin-bottom: 40px; max-width: 650px; margin-left: auto; margin-right: auto; }
+    .btn { display: inline-block; background: #c8a951; color: #1a2e1a; padding: 14px 32px; border-radius: 4px; font-weight: 700; font-size: 16px; transition: all 0.2s; border: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+    .btn:hover { background: #b89841; }
+    .btn-outline { background: transparent; border: 2px solid #c8a951; color: #c8a951; margin-left: 12px; }
+    .btn-outline:hover { background: #c8a951; color: #1a2e1a; }
+
+    /* Promo bar */
+    .promo-bar { background: #c8a951; color: #1a2e1a; text-align: center; padding: 10px 24px; font-size: 14px; font-weight: 600; letter-spacing: 0.5px; }
+
+    /* Sections */
+    .section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+    .section-alt { background: #f0efe8; }
+    .section-dark { background: #1a2e1a; color: #fff; }
+    .section-title { font-size: 38px; font-weight: 700; text-align: center; margin-bottom: 12px; }
+    .section-subtitle { font-size: 17px; color: #666; text-align: center; margin-bottom: 52px; max-width: 600px; margin-left: auto; margin-right: auto; font-family: 'Inter', sans-serif; }
+
+    /* Beer showcase */
+    .beer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+    .beer-card { background: #fff; border: 1px solid #e0ddd4; border-radius: 8px; padding: 32px 24px; text-align: center; transition: transform 0.2s; }
+    .beer-card:hover { transform: translateY(-4px); }
+    .beer-emoji { font-size: 48px; margin-bottom: 16px; }
+    .beer-card h3 { font-size: 20px; margin-bottom: 8px; color: #1a2e1a; }
+    .beer-style { font-size: 13px; color: #c8a951; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+    .beer-card p { font-size: 14px; color: #666; line-height: 1.7; }
+    .beer-abv { font-size: 13px; color: #999; margin-top: 8px; font-weight: 600; }
+
+    /* Story */
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .story-text h2 { font-size: 36px; margin-bottom: 20px; text-align: left; }
+    .story-text p { font-size: 16px; color: #555; line-height: 1.8; margin-bottom: 16px; }
+    .story-tagline { font-family: 'Playfair Display', serif; font-size: 28px; color: #c8a951; font-weight: 700; margin-top: 24px; }
+    .story-image { background: linear-gradient(135deg, #2d4a2d, #4a6a4a); border-radius: 8px; height: 380px; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+
+    /* Stats */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; padding: 60px 24px; max-width: 1100px; margin: 0 auto; }
+    .stat-number { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 800; color: #c8a951; }
+    .stat-label { font-size: 14px; color: #b8c8a8; margin-top: 4px; }
+
+    /* Visit section */
+    .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .visit-details h3 { font-size: 22px; margin-bottom: 16px; }
+    .visit-details p { font-size: 15px; color: #555; line-height: 1.8; margin-bottom: 12px; }
+    .visit-info { background: #1a2e1a; color: #fff; border-radius: 8px; padding: 36px; }
+    .visit-info h3 { font-size: 22px; color: #c8a951; margin-bottom: 16px; }
+    .visit-info p { font-size: 15px; color: #d4d4c8; line-height: 1.8; margin-bottom: 8px; }
+    .visit-tag { display: inline-block; background: #2d4a2d; color: #c8a951; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-top: 12px; margin-right: 8px; }
+
+    /* Reviews */
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .review { background: #fff; border: 1px solid #e0ddd4; border-radius: 8px; padding: 28px; }
+    .review-stars { color: #c8a951; font-size: 16px; margin-bottom: 12px; }
+    .review blockquote { font-size: 15px; color: #444; line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+    .review .author { font-size: 14px; font-weight: 600; color: #1a2e1a; }
+    .review .source { font-size: 12px; color: #999; }
+
+    /* News */
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+    .news-card { background: #fff; border: 1px solid #e0ddd4; border-radius: 8px; overflow: hidden; }
+    .news-img { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 48px; }
+    .news-img-1 { background: linear-gradient(135deg, #2d4a2d, #4a6a4a); }
+    .news-img-2 { background: linear-gradient(135deg, #4a3a1a, #6a5a2a); }
+    .news-img-3 { background: linear-gradient(135deg, #1a2e3e, #2d4a5e); }
+    .news-body { padding: 24px; }
+    .news-date { font-size: 13px; color: #999; margin-bottom: 8px; }
+    .news-card h3 { font-size: 18px; margin-bottom: 8px; }
+    .news-card p { font-size: 14px; color: #666; line-height: 1.6; }
+
+    /* CTA */
+    .cta-banner { background: linear-gradient(135deg, #1a2e1a, #2d4a2d); color: #fff; padding: 72px 24px; text-align: center; }
+    .cta-banner h2 { font-size: 36px; margin-bottom: 16px; }
+    .cta-banner p { font-size: 17px; color: #b8c8a8; margin-bottom: 32px; max-width: 550px; margin-left: auto; margin-right: auto; }
+
+    /* Footer */
+    .footer { background: #0f1a0f; color: #777; padding: 40px 24px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+    .footer h4 { color: #c8a951; font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 16px; }
+    .footer p, .footer a { font-size: 14px; color: #888; line-height: 2; }
+    .footer a:hover { color: #c8a951; }
+    .footer-bottom { border-top: 1px solid #1a2e1a; margin-top: 32px; padding-top: 20px; text-align: center; font-size: 13px; color: #555; max-width: 1100px; margin-left: auto; margin-right: auto; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 34px; }
+      .story-grid, .visit-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="promo-bar">FREE SHIPPING ACROSS NOVA SCOTIA &amp; NEW BRUNSWICK — TAPROOM OPEN DAILY 12 PM – 7 PM</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Walk in the Woods <span>Brewing</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="beers.html">Our Beers</a>
+      <a href="visit.html">Visit Us</a>
+      <a href="about.html">Our Story</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Brewed Deep in the Cape Breton Highlands</h1>
+    <h2>Small-batch organic craft beer from 80 acres of forest, spring water, and fresh highland air</h2>
+    <p>Every batch starts with a walk through the woods — cold spring water, wild-foraged ingredients, and grain from farms we know by name. No shortcuts. No concentrates. Just honest beer from honest land.</p>
+    <a href="beers.html" class="btn">Explore Our Beers</a>
+    <a href="visit.html" class="btn btn-outline">Plan Your Visit</a>
+  </div>
+</section>
+
+<!-- Beer Showcase -->
+<section class="section">
+  <h2 class="section-title">What's On Tap</h2>
+  <p class="section-subtitle">Unfiltered, unpasteurized, and brewed with 100% organic ingredients from the highlands and local farms.</p>
+  <div class="beer-grid">
+    <div class="beer-card">
+      <div class="beer-emoji">🍺</div>
+      <h3>Trail Head IPA</h3>
+      <div class="beer-style">India Pale Ale</div>
+      <p>West coast hops meet highland spring water. Citrus forward with a piney backbone that finishes clean and dry.</p>
+      <div class="beer-abv">6.2% ABV · 55 IBU</div>
+    </div>
+    <div class="beer-card">
+      <div class="beer-emoji">🌾</div>
+      <h3>Morning Fog Lager</h3>
+      <div class="beer-style">Craft Lager</div>
+      <p>Crisp, clean, and light as the mist rolling off Bras d'Or Lake at dawn. Our best-selling session beer.</p>
+      <div class="beer-abv">4.6% ABV · 18 IBU</div>
+    </div>
+    <div class="beer-card">
+      <div class="beer-emoji">🍂</div>
+      <h3>Deadfall Stout</h3>
+      <div class="beer-style">Oatmeal Stout</div>
+      <p>Rich, velvety, and roasted with locally sourced oats. Notes of dark chocolate, coffee, and a hint of molasses.</p>
+      <div class="beer-abv">5.8% ABV · 32 IBU</div>
+    </div>
+    <div class="beer-card">
+      <div class="beer-emoji">🫐</div>
+      <h3>Berry Bramble Sour</h3>
+      <div class="beer-style">Wild Ale</div>
+      <p>Tart, fruity, and refreshing. Brewed with wild blueberries foraged from our hillside and a touch of sea salt.</p>
+      <div class="beer-abv">4.3% ABV · 8 IBU</div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<div class="section-dark">
+  <div class="stats-grid">
+    <div>
+      <div class="stat-number">80</div>
+      <div class="stat-label">Acres of Highland Forest</div>
+    </div>
+    <div>
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Organic Ingredients</div>
+    </div>
+    <div>
+      <div class="stat-number">12</div>
+      <div class="stat-label">Beers on Rotation</div>
+    </div>
+    <div>
+      <div class="stat-number">2019</div>
+      <div class="stat-label">Founded</div>
+    </div>
+  </div>
+</div>
+
+<!-- Story -->
+<section class="section">
+  <div class="story-grid">
+    <div class="story-text">
+      <h2>We Are Walk in the Woods</h2>
+      <p>It started with a piece of land nobody wanted — 80 acres of dense spruce and birch on a hillside outside Baddeck with no road access and no power. We saw something else: cold spring water bubbling up through granite, wild hops climbing the treeline, and enough quiet to actually think.</p>
+      <p>Six years later, we brew every batch with water from that same spring, grain from PEI and Annapolis Valley farms, and hops we grow ourselves on a south-facing clearing we carved out by hand. No investors. No production line. Just two people who left city jobs to make beer the slow way.</p>
+      <div class="story-tagline">Slow. Wild. Beer.</div>
+    </div>
+    <div class="story-image">🌲</div>
+  </div>
+</section>
+
+<!-- Visit Preview -->
+<section class="section-alt">
+  <div class="section" style="padding-top: 80px; padding-bottom: 80px;">
+    <h2 class="section-title">Come Find Us</h2>
+    <p class="section-subtitle">Our taproom is tucked into the woods at the end of a gravel road. Bring the family, bring the dog, and stay a while.</p>
+    <div class="visit-grid">
+      <div class="visit-details">
+        <h3>The taproom is nothing fancy — and that's the point</h3>
+        <p>Wooden benches, string lights, a wood stove in the corner, and a patio that looks out over the Bras d'Or Lake. Order a flight, grab a seat by the fire pit, and let the kids run around on the grass. We have a small kitchen serving wood-fired flatbreads, smoked meats, and whatever the garden gives us that week.</p>
+        <p>Groups of 8+ are welcome but please book ahead so we can set up the long table. Private tastings and brewery tours available Thursday through Sunday — just ask at the bar.</p>
+      </div>
+      <div class="visit-info">
+        <h3>Taproom Hours</h3>
+        <p>Monday – Wednesday: Closed</p>
+        <p>Thursday – Friday: 2 PM – 8 PM</p>
+        <p>Saturday – Sunday: 12 PM – 7 PM</p>
+        <p style="margin-top: 20px; color: #c8a951; font-weight: 600;">📍 142 Timber Ridge Road, Baddeck, NS B0E 1B0</p>
+        <p>📞 (902) 555-0174</p>
+        <p>📧 hello@walkinthewoods.ca</p>
+        <div style="margin-top: 16px;">
+          <span class="visit-tag">🐕 Dog Friendly</span>
+          <span class="visit-tag">👨‍👩‍👧 Kid Friendly</span>
+          <span class="visit-tag">♿ Accessible</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="section">
+  <h2 class="section-title">What People Are Saying</h2>
+  <p class="section-subtitle">We don't run ads. Our beer does the talking.</p>
+  <div class="reviews-grid">
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <blockquote>Best brewery experience in Cape Breton, hands down. The Trail Head IPA is unreal and the setting — sitting on the patio watching the sunset over Bras d'Or — you can't beat it. We drove 2 hours and it was worth every minute.</blockquote>
+      <div class="author">Sarah M.</div>
+      <div class="source">Google Review</div>
+    </div>
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <blockquote>Brought the whole family including the golden retriever. Kids played on the lawn, we tried the flight, and the wood-fired flatbread was incredible. Felt like visiting friends, not a business. Will be back every summer.</blockquote>
+      <div class="author">Jason & Pam K.</div>
+      <div class="source">Google Review</div>
+    </div>
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <blockquote>I'm a homebrewer and I've visited 40+ craft breweries across the Maritimes. Walk in the Woods is the real deal — you can taste the water quality difference. The Deadfall Stout is the best stout east of Montreal.</blockquote>
+      <div class="author">Mike R.</div>
+      <div class="source">TripAdvisor</div>
+    </div>
+  </div>
+</section>
+
+<!-- News -->
+<section class="section-alt">
+  <div class="section" style="padding-top: 80px; padding-bottom: 80px;">
+    <h2 class="section-title">Latest News</h2>
+    <p class="section-subtitle">Happenings from the woods, the brewhouse, and the taproom.</p>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-img news-img-1">🎶</div>
+        <div class="news-body">
+          <div class="news-date">March 15, 2026</div>
+          <h3>Live Music Saturdays Are Back</h3>
+          <p>Starting April 5th, local musicians take the patio stage every Saturday from 3–6 PM. Bring a blanket, grab a pint, and enjoy the highland acoustics.</p>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-img news-img-2">🌿</div>
+        <div class="news-body">
+          <div class="news-date">March 8, 2026</div>
+          <h3>Spring Foraging Brew Day</h3>
+          <p>Join us April 12th for a guided walk through the property to forage spruce tips and wild herbs, then watch us brew a one-off seasonal ale with whatever we find.</p>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-img news-img-3">📦</div>
+        <div class="news-body">
+          <div class="news-date">February 28, 2026</div>
+          <h3>Now Shipping to New Brunswick</h3>
+          <p>By popular demand, we've expanded our delivery range. Free shipping on orders of 12+ cans anywhere in NS and NB. Ontario and PEI coming this summer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <h2>Life Is Too Short for Boring Beer</h2>
+  <p>Order a mixed case shipped to your door, or drive out and taste them where they're made — cold, fresh, and poured 20 feet from the tank.</p>
+  <a href="beers.html" class="btn">Shop Our Beers</a>
+  <a href="visit.html" class="btn btn-outline">Visit the Taproom</a>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <h4>Walk in the Woods Brewing</h4>
+      <p>Small-batch organic craft beer brewed on 80 acres in the Cape Breton Highlands. No shortcuts, no concentrates — just honest beer from honest land.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="beers.html" style="display:block;">Our Beers</a>
+      <a href="visit.html" style="display:block;">Visit Us</a>
+      <a href="about.html" style="display:block;">Our Story</a>
+      <a href="events.html" style="display:block;">Events</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>142 Timber Ridge Road<br>Baddeck, NS B0E 1B0</p>
+      <p>📞 (902) 555-0174</p>
+      <p>📧 hello@walkinthewoods.ca</p>
+    </div>
+    <div>
+      <h4>Hours</h4>
+      <p>Thu–Fri: 2 PM – 8 PM</p>
+      <p>Sat–Sun: 12 PM – 7 PM</p>
+      <p>Mon–Wed: Closed</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Walk in the Woods Brewing Co. All rights reserved. | Please drink responsibly. You must be 19+ to purchase.</p>
+  </div>
+</footer>
+
+</body>
+</html>

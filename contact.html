@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Walk in the Woods Brewing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #1c1c1c; line-height: 1.6; background: #faf9f6; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+    .nav { background: #1a2e1a; padding: 16px 0; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'Playfair Display', serif; color: #c8a951; font-size: 20px; font-weight: 700; }
+    .nav-logo span { color: #d4d4c8; font-weight: 400; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: #b8b8a8; font-size: 15px; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #c8a951; }
+    .page-hero { background: linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 100%); color: #fff; padding: 64px 24px; text-align: center; }
+    .page-hero h1 { font-size: 44px; margin-bottom: 12px; }
+    .page-hero p { font-size: 18px; color: #b8c8a8; max-width: 650px; margin: 0 auto; }
+    .section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+    .section-alt { background: #f0efe8; }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .contact-info h2 { font-size: 32px; margin-bottom: 20px; }
+    .contact-info p { font-size: 16px; color: #555; line-height: 1.8; margin-bottom: 16px; }
+    .contact-method { margin-bottom: 24px; }
+    .contact-method h3 { font-size: 18px; margin-bottom: 6px; color: #1a2e1a; }
+    .contact-method p { font-size: 15px; color: #555; margin-bottom: 4px; }
+    .contact-method .detail { color: #c8a951; font-weight: 600; }
+
+    .contact-form h2 { font-size: 28px; margin-bottom: 20px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: #333; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px 16px; border: 1px solid #d4d4c8; border-radius: 6px; font-size: 15px; font-family: 'Inter', sans-serif; background: #fff; color: #1c1c1c; transition: border-color 0.2s; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: #c8a951; }
+    .form-group textarea { min-height: 140px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn { display: inline-block; background: #c8a951; color: #1a2e1a; padding: 14px 32px; border-radius: 4px; font-weight: 700; font-size: 16px; transition: all 0.2s; border: none; cursor: pointer; font-family: 'Inter', sans-serif; width: 100%; }
+    .btn:hover { background: #b89841; }
+
+    .faq-section { margin-top: 64px; }
+    .faq-section h2 { font-size: 28px; margin-bottom: 12px; text-align: center; }
+    .faq-section > p { font-size: 16px; color: #555; text-align: center; margin-bottom: 40px; }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .faq-item { background: #fff; border: 1px solid #e0ddd4; border-radius: 8px; padding: 24px; }
+    .faq-item h3 { font-size: 17px; margin-bottom: 8px; color: #1a2e1a; font-family: 'Inter', sans-serif; }
+    .faq-item p { font-size: 14px; color: #666; line-height: 1.7; }
+
+    .wholesale-section { margin-top: 64px; }
+    .wholesale-section h2 { font-size: 28px; margin-bottom: 12px; }
+    .wholesale-section p { font-size: 16px; color: #555; line-height: 1.8; margin-bottom: 16px; }
+
+    .social-section { margin-top: 48px; text-align: center; }
+    .social-section h2 { font-size: 28px; margin-bottom: 12px; }
+    .social-section p { font-size: 16px; color: #555; margin-bottom: 24px; }
+    .social-links { display: flex; gap: 20px; justify-content: center; }
+    .social-link { display: inline-block; background: #1a2e1a; color: #c8a951; padding: 12px 24px; border-radius: 6px; font-weight: 600; font-size: 15px; transition: background 0.2s; }
+    .social-link:hover { background: #2d4a2d; }
+
+    .footer { background: #0f1a0f; color: #777; padding: 32px 24px; text-align: center; font-size: 13px; }
+
+    @media (max-width: 768px) {
+      .contact-grid, .faq-grid, .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Walk in the Woods <span>Brewing</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="beers.html">Our Beers</a>
+      <a href="visit.html">Visit Us</a>
+      <a href="about.html">Our Story</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <h1>Get in Touch</h1>
+  <p>Questions about our beers, planning a visit, booking a private event, or just want to say hello? We read every message and reply within 24 hours — usually faster.</p>
+</section>
+
+<section class="section">
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h2>We'd Love to Hear From You</h2>
+      <p>Whether you're planning a trip to the taproom, interested in carrying our beer at your restaurant, or have a question about one of our brews — drop us a line. We're two people running this operation, so you'll always get a real human response, not an auto-reply.</p>
+      <p>For event bookings and private tastings, please include your preferred date, group size, and any dietary requirements. We try to accommodate everything but it helps to plan ahead, especially during summer season when the taproom books up fast.</p>
+
+      <div class="contact-method">
+        <h3>📍 Visit Us</h3>
+        <p class="detail">142 Timber Ridge Road, Baddeck, NS B0E 1B0</p>
+        <p>15 minutes from downtown Baddeck, at the end of a gravel road. Look for the brewery sign on the right. Free parking lot fits 30 cars.</p>
+      </div>
+
+      <div class="contact-method">
+        <h3>📞 Call Us</h3>
+        <p class="detail">(902) 555-0174</p>
+        <p>Best reached during taproom hours (Thu–Sun). If we don't pick up, we're probably in the brewhouse — leave a message and we'll call back.</p>
+      </div>
+
+      <div class="contact-method">
+        <h3>📧 Email Us</h3>
+        <p class="detail">hello@walkinthewoods.ca</p>
+        <p>For general inquiries, online orders, media requests, and anything that isn't urgent. We check email every morning.</p>
+      </div>
+
+      <div class="contact-method">
+        <h3>🕐 Taproom Hours</h3>
+        <p>Monday – Wednesday: Closed</p>
+        <p>Thursday – Friday: 2 PM – 8 PM</p>
+        <p>Saturday – Sunday: 12 PM – 7 PM</p>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h2>Send Us a Message</h2>
+      <form action="#" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Full name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number (optional)</label>
+          <input type="tel" id="phone" name="phone" placeholder="(902) 555-0000">
+        </div>
+        <div class="form-group">
+          <label for="subject">What's This About?</label>
+          <select id="subject" name="subject">
+            <option value="">Select a topic...</option>
+            <option value="visit">Planning a Visit</option>
+            <option value="private-event">Private Event Booking</option>
+            <option value="online-order">Online Order Question</option>
+            <option value="wholesale">Wholesale / Carrying Our Beer</option>
+            <option value="collaboration">Collaboration or Partnership</option>
+            <option value="media">Media / Press Inquiry</option>
+            <option value="careers">Careers / Working With Us</option>
+            <option value="other">Something Else</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+        </div>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <p>Quick answers to the things people ask us most often.</p>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>Do I need a reservation to visit the taproom?</h3>
+        <p>No reservation needed for regular taproom visits — just show up during open hours. For groups of 8+ or private events, please contact us in advance so we can prepare the space and make sure we have enough staff.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I bring my dog?</h3>
+        <p>Absolutely. Dogs are welcome on the patio and the lawn area. We keep water bowls by the entrance and the fire pit. We only ask that dogs stay on leash inside the taproom building. Most of our regulars bring their dogs — it's part of the vibe.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you ship beer to other provinces?</h3>
+        <p>Currently we ship within Nova Scotia and New Brunswick (free shipping on orders of 12+ cans). We're working on expanding to PEI and Ontario this summer. Each province has different regulations for direct-to-consumer alcohol shipping, so it takes time to get licensed.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I buy Walk in the Woods beer at the NSLC?</h3>
+        <p>Not yet. We're a small operation and we prioritize taproom and direct-to-consumer sales. You can find us at a handful of restaurants and bars in Halifax and Cape Breton — check our social media for the current list. NSLC listing is on our radar for 2027.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Are your beers really 100% organic?</h3>
+        <p>Yes. We're certified organic through ACORN (Atlantic Canadian Organic Regional Network). That covers our grain, hops, yeast nutrients, and cleaning products. Annual inspections verify our entire supply chain. It costs more and it's harder to source, but it's non-negotiable for us.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you do growler fills?</h3>
+        <p>Yes — bring your own clean 64oz growler (or buy one of ours for $8) and we'll fill it with anything on tap. Growler fills are $16–$20 depending on the beer. Best consumed within 48 hours of filling for peak freshness.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is the taproom accessible?</h3>
+        <p>The taproom building and main patio are wheelchair accessible with a gentle ramp at the entrance. The accessible parking spots are closest to the door. The forest trails are not wheelchair accessible (natural terrain with roots and inclines). The indoor washroom is fully accessible.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I host a wedding at the brewery?</h3>
+        <p>We've hosted several rehearsal dinners and small wedding receptions (under 50 people). We don't have the infrastructure for large weddings (no dance floor, limited indoor capacity), but for intimate celebrations, it's a beautiful setting. Contact us to discuss your vision and we'll let you know what's possible.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wholesale-section">
+    <h2>Wholesale & Restaurant Partners</h2>
+    <p>We work with a small number of restaurants, bars, and specialty food shops across Nova Scotia and Cape Breton who share our values around quality and local sourcing. If you're interested in carrying Walk in the Woods beer, we'd love to hear from you.</p>
+    <p>We deliver within Cape Breton weekly and to Halifax bi-weekly. Minimum order is one case (24 x 473ml cans) per SKU. We provide tap handles, glassware, and menu descriptions for draft accounts. All our beer is unfiltered and unpasteurized, so it needs to be kept cold — we only partner with accounts that can guarantee proper cold chain storage.</p>
+    <p>Current partners include The Red Door (Baddeck), The Freight Shed (Louisbourg), Stillwell Bar (Halifax), The Good Food Emporium (Halifax), and The Old Triangle (Sydney). If that sounds like your kind of company, reach out via the form above or email wholesale@walkinthewoods.ca directly.</p>
+  </div>
+
+  <div class="social-section">
+    <h2>Follow Along</h2>
+    <p>Taproom updates, new beer announcements, behind-the-scenes brew days, and the occasional photo of the fox family that lives on the property.</p>
+    <div class="social-links">
+      <a href="#" class="social-link">Instagram</a>
+      <a href="#" class="social-link">Facebook</a>
+      <a href="#" class="social-link">Twitter/X</a>
+    </div>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <p>&copy; 2026 Walk in the Woods Brewing Co. All rights reserved. | Please drink responsibly. You must be 19+ to purchase.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visit Us — Walk in the Woods Brewing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #1c1c1c; line-height: 1.6; background: #faf9f6; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+    .nav { background: #1a2e1a; padding: 16px 0; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'Playfair Display', serif; color: #c8a951; font-size: 20px; font-weight: 700; }
+    .nav-logo span { color: #d4d4c8; font-weight: 400; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: #b8b8a8; font-size: 15px; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #c8a951; }
+    .page-hero { background: linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 100%); color: #fff; padding: 64px 24px; text-align: center; }
+    .page-hero h1 { font-size: 44px; margin-bottom: 12px; }
+    .page-hero p { font-size: 18px; color: #b8c8a8; max-width: 600px; margin: 0 auto; }
+    .section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+    .section-alt { background: #f0efe8; }
+
+    .visit-main { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; margin-bottom: 64px; }
+    .visit-main h2 { font-size: 32px; margin-bottom: 20px; }
+    .visit-main p { font-size: 16px; color: #555; line-height: 1.8; margin-bottom: 16px; }
+    .info-card { background: #1a2e1a; color: #fff; border-radius: 8px; padding: 36px; }
+    .info-card h3 { font-size: 22px; color: #c8a951; margin-bottom: 16px; }
+    .info-card p { font-size: 15px; color: #d4d4c8; line-height: 2; margin-bottom: 4px; }
+    .info-card .highlight { color: #c8a951; font-weight: 600; }
+    .tag { display: inline-block; background: #2d4a2d; color: #c8a951; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-top: 12px; margin-right: 8px; }
+
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; margin-bottom: 64px; }
+    .feature-card { background: #fff; border: 1px solid #e0ddd4; border-radius: 8px; padding: 32px; }
+    .feature-icon { font-size: 36px; margin-bottom: 16px; }
+    .feature-card h3 { font-size: 20px; margin-bottom: 10px; }
+    .feature-card p { font-size: 14px; color: #666; line-height: 1.7; }
+
+    .map-section { background: #e8e6dc; border-radius: 8px; height: 300px; display: flex; align-items: center; justify-content: center; margin-bottom: 64px; }
+    .map-placeholder { text-align: center; color: #888; }
+    .map-placeholder p { font-size: 14px; }
+    .map-placeholder .addr { font-size: 18px; font-weight: 600; color: #1a2e1a; margin-bottom: 8px; }
+
+    .directions { margin-bottom: 64px; }
+    .directions h2 { font-size: 28px; margin-bottom: 20px; }
+    .directions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .direction-card { background: #fff; border: 1px solid #e0ddd4; border-radius: 8px; padding: 24px; }
+    .direction-card h3 { font-size: 17px; margin-bottom: 8px; color: #1a2e1a; }
+    .direction-card p { font-size: 14px; color: #666; line-height: 1.7; }
+
+    .food-section h2 { font-size: 28px; margin-bottom: 12px; }
+    .food-section > p { font-size: 16px; color: #555; margin-bottom: 32px; line-height: 1.8; }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .menu-item { background: #fff; border: 1px solid #e0ddd4; border-radius: 8px; padding: 24px; text-align: center; }
+    .menu-item h3 { font-size: 17px; margin-bottom: 6px; }
+    .menu-item p { font-size: 13px; color: #666; }
+    .menu-item .price { font-size: 16px; font-weight: 700; color: #c8a951; margin-top: 8px; }
+
+    .btn { display: inline-block; background: #c8a951; color: #1a2e1a; padding: 14px 32px; border-radius: 4px; font-weight: 700; font-size: 16px; transition: all 0.2s; border: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+    .btn:hover { background: #b89841; }
+    .cta-banner { background: linear-gradient(135deg, #1a2e1a, #2d4a2d); color: #fff; padding: 64px 24px; text-align: center; }
+    .cta-banner h2 { font-size: 32px; margin-bottom: 12px; }
+    .cta-banner p { font-size: 17px; color: #b8c8a8; margin-bottom: 28px; }
+    .footer { background: #0f1a0f; color: #777; padding: 32px 24px; text-align: center; font-size: 13px; }
+
+    @media (max-width: 768px) {
+      .visit-main, .directions-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Walk in the Woods <span>Brewing</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="beers.html">Our Beers</a>
+      <a href="visit.html" class="active">Visit Us</a>
+      <a href="about.html">Our Story</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <h1>Visit the Taproom</h1>
+  <p>Tucked into 80 acres of highland forest at the end of a gravel road. Bring the family, bring the dog, and stay a while.</p>
+</section>
+
+<section class="section">
+
+  <div class="visit-main">
+    <div>
+      <h2>The taproom is nothing fancy — and that's the whole point</h2>
+      <p>We built the taproom from reclaimed barn wood and windows salvaged from a church in Sydney that was being torn down. There are wooden benches, string lights strung between the spruce trees, a wood stove for cold days, and a patio that looks out over the Bras d'Or Lake through a gap in the canopy.</p>
+      <p>Order a flight at the bar, grab a seat by the fire pit, and let the kids run around on the grass. There's no TV, no Wi-Fi password on the wall, and the cell signal is patchy at best. That's by design. You came to the woods — enjoy the quiet.</p>
+      <p>Groups of 8+ are welcome but please call ahead so we can set up the long table. Private tastings and brewery tours available Thursday through Sunday — just ask at the bar or book through our contact page.</p>
+    </div>
+    <div class="info-card">
+      <h3>Taproom Hours</h3>
+      <p>Monday – Wednesday: <strong>Closed</strong></p>
+      <p>Thursday – Friday: <strong>2 PM – 8 PM</strong></p>
+      <p>Saturday – Sunday: <strong>12 PM – 7 PM</strong></p>
+      <p style="margin-top: 20px;" class="highlight">📍 142 Timber Ridge Road, Baddeck, NS B0E 1B0</p>
+      <p>📞 (902) 555-0174</p>
+      <p>📧 hello@walkinthewoods.ca</p>
+      <div style="margin-top: 16px;">
+        <span class="tag">🐕 Dog Friendly</span>
+        <span class="tag">👨‍👩‍👧 Kid Friendly</span>
+        <span class="tag">♿ Accessible</span>
+        <span class="tag">🅿️ Free Parking</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🍻</div>
+      <h3>Flights & Pints</h3>
+      <p>Try a 4-beer flight ($14) or order pints of anything on tap. We usually have 8–10 beers pouring plus one cask-conditioned option. Take-away cans and growler fills available at the bar.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔥</div>
+      <h3>Fire Pit & Patio</h3>
+      <p>The outdoor patio seats 40 and the fire pit runs every evening from May through October. Bring a blanket for cooler nights. The sunset through the trees is worth the drive alone.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏭</div>
+      <h3>Brewery Tours</h3>
+      <p>Free 30-minute tours on Saturdays at 1 PM and 3 PM. Walk through the brewhouse, see the hopyard, taste grain from the mash tun, and learn how spring water becomes beer. No reservation needed.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎵</div>
+      <h3>Live Music</h3>
+      <p>Local musicians play the patio stage every Saturday from 3–6 PM, May through September. Past acts include fiddle players, folk trios, and the occasional sea shanty crew. No cover charge.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎉</div>
+      <h3>Private Events</h3>
+      <p>Book the taproom for birthdays, rehearsal dinners, or team outings. Capacity 50 seated, 80 standing. Includes dedicated bartender, beer package, and optional food. Email us for pricing.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🛒</div>
+      <h3>Take-Home Shop</h3>
+      <p>Grab cans, bottles, merch, and gift packs at the retail counter by the entrance. We also sell local cheese, charcuterie boards, and honey from a beekeeper down the road.</p>
+    </div>
+  </div>
+
+  <div class="map-section">
+    <div class="map-placeholder">
+      <div class="addr">142 Timber Ridge Road, Baddeck, NS B0E 1B0</div>
+      <p>15 minutes from downtown Baddeck · 2 hours from Halifax via Trans-Canada Highway</p>
+    </div>
+  </div>
+
+  <div class="directions">
+    <h2>Getting Here</h2>
+    <div class="directions-grid">
+      <div class="direction-card">
+        <h3>From Halifax (2 hrs)</h3>
+        <p>Take the Trans-Canada (Hwy 104/105) toward Sydney. Exit at Baddeck (Exit 8). Turn right onto Hwy 205, then left on Timber Ridge Road after 3 km. Follow the gravel road to the end — you'll see the brewery sign on the right.</p>
+      </div>
+      <div class="direction-card">
+        <h3>From Sydney (1 hr)</h3>
+        <p>Take the Trans-Canada (Hwy 105) west toward Baddeck. Exit at Exit 8. Turn left onto Hwy 205, then left on Timber Ridge Road after 3 km. Follow the gravel road to the end.</p>
+      </div>
+      <div class="direction-card">
+        <h3>From the Cabot Trail</h3>
+        <p>If you're driving the Cabot Trail, Baddeck is the natural start/end point. We're 15 minutes outside town — a perfect first or last stop on your loop.</p>
+      </div>
+      <div class="direction-card">
+        <h3>Parking</h3>
+        <p>Free gravel parking lot fits 30 cars. Overflow parking on the grass field during events. Accessible spots near the entrance. Bikes welcome — lock up by the hopyard fence.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="food-section">
+    <h2>Food at the Taproom</h2>
+    <p>Our small kitchen serves simple food made with local ingredients. The menu changes with the season and whatever the garden gives us that week. We don't try to be a restaurant — just good food that pairs well with beer.</p>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <h3>Wood-Fired Flatbread</h3>
+        <p>Local cheese, garlic, herbs from the garden</p>
+        <div class="price">$14</div>
+      </div>
+      <div class="menu-item">
+        <h3>Smoked Meat Board</h3>
+        <p>House-smoked brisket, mustard, pickles, bread</p>
+        <div class="price">$18</div>
+      </div>
+      <div class="menu-item">
+        <h3>Beer Cheese Dip</h3>
+        <p>Made with Deadfall Stout, served with pretzels</p>
+        <div class="price">$12</div>
+      </div>
+      <div class="menu-item">
+        <h3>Garden Bowl</h3>
+        <p>Seasonal greens, roasted veg, grain, tahini</p>
+        <div class="price">$15</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="cta-banner">
+  <h2>Can't Make It Out? We'll Ship to You</h2>
+  <p>Order a mixed case online — free shipping across Nova Scotia and New Brunswick.</p>
+  <a href="beers.html" class="btn">Shop Our Beers</a>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2026 Walk in the Woods Brewing Co. All rights reserved. | Please drink responsibly. You must be 19+ to purchase.</p>
+</footer>
+
+</body>
+</html>

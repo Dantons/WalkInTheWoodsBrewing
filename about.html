@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story — Walk in the Woods Brewing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #1c1c1c; line-height: 1.6; background: #faf9f6; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+    .nav { background: #1a2e1a; padding: 16px 0; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'Playfair Display', serif; color: #c8a951; font-size: 20px; font-weight: 700; }
+    .nav-logo span { color: #d4d4c8; font-weight: 400; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: #b8b8a8; font-size: 15px; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #c8a951; }
+    .page-hero { background: linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 100%); color: #fff; padding: 64px 24px; text-align: center; }
+    .page-hero h1 { font-size: 44px; margin-bottom: 12px; }
+    .page-hero p { font-size: 18px; color: #b8c8a8; max-width: 650px; margin: 0 auto; }
+    .section { padding: 80px 24px; max-width: 900px; margin: 0 auto; }
+    .section-wide { max-width: 1100px; }
+    .section-alt { background: #f0efe8; }
+    .section-dark { background: #1a2e1a; color: #fff; }
+
+    .story-block { margin-bottom: 48px; }
+    .story-block h2 { font-size: 32px; margin-bottom: 16px; }
+    .story-block h3 { font-size: 24px; margin-bottom: 12px; color: #2d4a2d; }
+    .story-block p { font-size: 16px; color: #555; line-height: 1.85; margin-bottom: 16px; }
+    .story-quote { font-family: 'Playfair Display', serif; font-size: 26px; color: #c8a951; font-style: italic; border-left: 4px solid #c8a951; padding-left: 24px; margin: 32px 0; line-height: 1.5; }
+
+    .timeline { margin: 48px 0; }
+    .timeline-item { display: grid; grid-template-columns: 100px 1fr; gap: 24px; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid #e0ddd4; }
+    .timeline-year { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 800; color: #c8a951; }
+    .timeline-item h3 { font-size: 18px; margin-bottom: 6px; color: #1a2e1a; }
+    .timeline-item p { font-size: 15px; color: #666; line-height: 1.7; }
+
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; margin-top: 40px; }
+    .value-card { background: #fff; border: 1px solid #e0ddd4; border-radius: 8px; padding: 32px; }
+    .value-card h3 { font-size: 20px; margin-bottom: 10px; color: #1a2e1a; }
+    .value-card p { font-size: 14px; color: #666; line-height: 1.7; }
+    .value-icon { font-size: 36px; margin-bottom: 16px; }
+
+    .founders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+    .founder-card { text-align: center; }
+    .founder-avatar { width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #2d4a2d, #4a6a4a); display: flex; align-items: center; justify-content: center; font-size: 48px; margin: 0 auto 20px; }
+    .founder-card h3 { font-size: 22px; margin-bottom: 4px; }
+    .founder-role { font-size: 14px; color: #c8a951; font-weight: 600; margin-bottom: 12px; }
+    .founder-card p { font-size: 14px; color: #666; line-height: 1.7; }
+
+    .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; padding: 60px 24px; max-width: 1100px; margin: 0 auto; }
+    .stat-number { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 800; color: #c8a951; }
+    .stat-label { font-size: 14px; color: #b8c8a8; margin-top: 4px; }
+
+    .cta-banner { background: linear-gradient(135deg, #1a2e1a, #2d4a2d); color: #fff; padding: 64px 24px; text-align: center; }
+    .cta-banner h2 { font-size: 32px; margin-bottom: 12px; }
+    .cta-banner p { font-size: 17px; color: #b8c8a8; margin-bottom: 28px; max-width: 550px; margin-left: auto; margin-right: auto; }
+    .btn { display: inline-block; background: #c8a951; color: #1a2e1a; padding: 14px 32px; border-radius: 4px; font-weight: 700; font-size: 16px; transition: all 0.2s; border: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+    .btn:hover { background: #b89841; }
+    .btn-outline { background: transparent; border: 2px solid #c8a951; color: #c8a951; margin-left: 12px; }
+    .btn-outline:hover { background: #c8a951; color: #1a2e1a; }
+    .footer { background: #0f1a0f; color: #777; padding: 32px 24px; text-align: center; font-size: 13px; }
+
+    @media (max-width: 768px) {
+      .timeline-item { grid-template-columns: 1fr; }
+      .founders-grid { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Walk in the Woods <span>Brewing</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="beers.html">Our Beers</a>
+      <a href="visit.html">Visit Us</a>
+      <a href="about.html" class="active">Our Story</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <h1>Our Story</h1>
+  <p>We left city jobs to build a brewery on 80 acres of highland forest in Cape Breton. Here's how a piece of land nobody wanted became the home of some of the best beer in the Maritimes.</p>
+</section>
+
+<section class="section">
+
+  <div class="story-block">
+    <h2>It Started With a Walk</h2>
+    <p>In 2017, we were living in Halifax — good jobs, good apartment, good restaurants within walking distance. We were also making terrible homebrew in a 20-litre pot on the kitchen stove and talking constantly about "someday" opening a brewery. Someday was always next year.</p>
+    <p>Then a friend sent us a real estate listing for 80 acres of raw forested land outside Baddeck. No road. No power. No well. Just dense spruce and birch on a hillside overlooking the Bras d'Or Lake, with a price tag that suggested the seller had given up finding a buyer.</p>
+    <p>We drove up on a Saturday, hiked in through the trees for 40 minutes, and found a clearing on the south-facing slope. The view stopped us — lake to the east, highlands to the west, and absolute silence except for the wind in the canopy. At our feet, spring water was bubbling up through the granite.</p>
+    <p>We made an offer on the drive home. Didn't even talk about it. Just called the realtor from the car and said yes.</p>
+  </div>
+
+  <div class="story-quote">"We didn't buy a brewery. We bought a piece of land with incredible water and spent six years figuring out how to deserve it."</div>
+
+  <div class="story-block">
+    <h3>The First Three Years: Building Everything From Scratch</h3>
+    <p>There was no shortcut. The first summer was just clearing a road — chain saws, a rented skid-steer, and a lot of blackfly bites. The second summer was the well, the power line, and a small cabin so we could stop driving back to Halifax every Sunday night. The third summer was the brewhouse — a 1,200 square foot timber-frame building that we designed ourselves and built with help from a retired carpenter in Baddeck who thought we were crazy but liked the beer we bribed him with.</p>
+    <p>The brewing equipment came from a closed pub in PEI — a 7-barrel system that the previous owner had used maybe twice before deciding the restaurant business was not for them. We drove a flatbed trailer across the Confederation Bridge in February to pick it up. The fermentation tanks came from a dairy farmer in Antigonish who was retiring and had four stainless steel vessels that, with some modifications, worked perfectly.</p>
+    <p>Nothing about the first three years was efficient. We made every mistake you can make — fermented a batch too warm and had to dump it down the hill, cracked a fitting in January and flooded the brewhouse floor with 300 litres of pale ale, ordered the wrong grain twice because we were reading our own handwriting wrong. But every batch got a little better. The water made the difference. You can taste it in every beer we make — clean, mineral-rich, and cold straight from the ground.</p>
+  </div>
+
+  <div class="story-block">
+    <h3>Growing Our Own Ingredients</h3>
+    <p>The south-facing clearing where we first stood in 2017 is now a half-acre hopyard. We grow Cascade, Centennial, and Chinook on 18-foot trellises that catch the highland breeze and the long summer light. The hops go from the vine to the kettle on the same day — you can't get fresher than that.</p>
+    <p>We buy our grain from two farms we know by name: an organic barley operation in PEI and a wheat grower in the Annapolis Valley. Our oats come from a family farm outside Tatamagouche. Every supplier is within a day's drive, and we've visited every one of them.</p>
+    <p>The wild ingredients are the fun part. In May, we harvest spruce tips from the trees on the property for our Spruce Tip Saison. In August, we pick wild blueberries from the hillside for the Berry Bramble Sour. In October, we gather rosehips and juniper berries for a small-batch winter gin collaboration with a Nova Scotia distillery. The land gives us more than we could ever use — we just have to pay attention.</p>
+  </div>
+
+  <div class="story-block">
+    <h3>Why Organic Matters to Us</h3>
+    <p>We didn't go organic because it was trendy. We went organic because we drink the water that runs through this land, and we want to know exactly what's going into it. No synthetic pesticides on the hops. No chemical fertilizers on the clearing. No herbicides on the road edges. When the spring rain washes downhill, it feeds the same aquifer that feeds our well and our beer.</p>
+    <p>Organic brewing is harder and more expensive. The hop yields are lower. The grain costs more. Pest management means hand-picking bugs off the hop bines in July instead of spraying them. But the flavour is worth it — our hops have a complexity and depth that you don't get from conventionally grown cones, and the grain has a richness that carries through to the finished beer.</p>
+    <p>We're certified organic through the Atlantic Canadian Organic Regional Network (ACORN). That means annual inspections, full traceability from farm to glass, and zero tolerance for prohibited substances. It's not just a label — it's the entire way we operate.</p>
+  </div>
+
+</section>
+
+<div class="section-dark">
+  <div class="stats-bar">
+    <div>
+      <div class="stat-number">80</div>
+      <div class="stat-label">Acres of Highland Forest</div>
+    </div>
+    <div>
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Organic Ingredients</div>
+    </div>
+    <div>
+      <div class="stat-number">7</div>
+      <div class="stat-label">Years Brewing</div>
+    </div>
+    <div>
+      <div class="stat-number">0</div>
+      <div class="stat-label">Shortcuts Taken</div>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+
+  <div class="story-block">
+    <h2>Meet the Founders</h2>
+    <p>Walk in the Woods is run by two people who traded office jobs for overalls, spreadsheets for grain bills, and commute traffic for gravel roads. We do everything — brew, bottle, deliver, clean the taproom, mow the grass, fix the plumbing, and answer the phone. There's no marketing department. There's no HR. There's just us, the beer, and the woods.</p>
+  </div>
+
+  <div class="founders-grid">
+    <div class="founder-card">
+      <div class="founder-avatar">👩</div>
+      <h3>Emma Macleod</h3>
+      <div class="founder-role">Co-Founder & Head Brewer</div>
+      <p>Former environmental scientist who spent 8 years testing water quality for the Nova Scotia government. Turned out the most important thing she learned was how to recognize great water — and the spring on our property has it. Emma designs every recipe, manages the hopyard, and is responsible for the Spruce Tip Saison that put us on the map. She can identify 15 hop varieties by smell alone and once drove to PEI in a snowstorm to pick up 400kg of organic malt because the delivery truck broke down.</p>
+    </div>
+    <div class="founder-card">
+      <div class="founder-avatar">👨</div>
+      <h3>Calum Fraser</h3>
+      <div class="founder-role">Co-Founder & Operations</div>
+      <p>Former project manager at an engineering firm who discovered that building a brewery from scratch is just project management with worse timelines and more blackflies. Calum handles the business side — licensing, distribution, taproom operations, deliveries, and the never-ending list of things that break on an 80-acre property. He also built the taproom bar by hand from reclaimed barn wood and is unreasonably proud of it. His contribution to the beer itself is mostly taste-testing and saying "needs more hops."</p>
+    </div>
+  </div>
+
+</section>
+
+<section class="section-alt">
+  <div class="section section-wide">
+    <div class="story-block" style="text-align: center;">
+      <h2>What We Believe In</h2>
+      <p style="max-width: 600px; margin: 0 auto 40px;">Every decision we make comes back to three principles. They're not hanging on the wall in a fancy frame — they're just how we work.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🌿</div>
+        <h3>Ingredient Integrity</h3>
+        <p>We know the name of every farmer who grows our grain. We grow our own hops. We use spring water from the property. No concentrates, no extracts, no flavour additives. If it goes into the beer, we can tell you exactly where it came from and who grew it. That traceability isn't marketing — it's how we sleep at night knowing every batch is honest.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🐢</div>
+        <h3>Slow Over Fast</h3>
+        <p>We lager for six weeks, not six days. We condition our ales until they're ready, not until the schedule says so. We release seasonal beers when the season is right, not when the marketing calendar demands it. Speed is the enemy of flavour, and we'd rather make less beer that's worth drinking than more beer that's just okay. Growth for its own sake isn't a goal — making beer we're proud of is.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🏔️</div>
+        <h3>Rooted in This Place</h3>
+        <p>We're not a craft brewery that happens to be in Cape Breton. We're a Cape Breton brewery — the land, the water, the climate, and the community shape everything we do. Our beers taste like this place because they're made from this place. We hire locally, source locally, and pour locally first. When you drink a Walk in the Woods beer, you're tasting the highlands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="story-block" style="text-align: center;">
+    <h2>How We Got Here</h2>
+    <p style="max-width: 600px; margin: 0 auto 40px;">Seven years from a piece of raw land to a taproom, a hopyard, and 12 beers on rotation. It wasn't fast, it wasn't easy, and we wouldn't do it any other way.</p>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-year">2017</div>
+      <div>
+        <h3>Found the Land</h3>
+        <p>Bought 80 acres of unserviced forest outside Baddeck on impulse after finding a spring on the south-facing slope. Spent the first summer clearing a road in and discovering exactly how many blackflies live in Cape Breton.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2018</div>
+      <div>
+        <h3>Infrastructure Year</h3>
+        <p>Drilled the well (hit water at 60 feet — cold, mineral-rich, perfect), ran the power line, and built a small cabin so we could live on-site during construction. First test batch brewed on a homebrew setup in the cabin kitchen. The cabin still smells like hops.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2019</div>
+      <div>
+        <h3>Brewhouse Built, First Batch</h3>
+        <p>Timber-frame brewhouse completed in June. Equipment installed in August. First commercial batch — Morning Fog Lager — brewed September 12th. Sold our first keg to a restaurant in Baddeck that same month. Cried a little. Drank a lot.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2020</div>
+      <div>
+        <h3>Taproom Opens (Sort Of)</h3>
+        <p>Opened the taproom in July with outdoor-only seating because of COVID. Turned out people loved sitting in the woods drinking beer, so we leaned into it. Added the fire pit, the string lights, and the patio that became our signature.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2021</div>
+      <div>
+        <h3>Hopyard Planted</h3>
+        <p>Planted 200 hop rhizomes on the south-facing clearing. Cascade, Centennial, and Chinook. Built the trellises ourselves (YouTube is a great teacher). First harvest was tiny but the aroma was unbelievable — we knew we had the right terroir.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2022</div>
+      <div>
+        <h3>Organic Certification</h3>
+        <p>Received organic certification through ACORN. Expanded distribution to Halifax — first time our beer was available outside Cape Breton. Spruce Tip Saison won bronze at the Atlantic Canadian Beer Awards.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2023</div>
+      <div>
+        <h3>Kitchen & Live Music</h3>
+        <p>Added the wood-fired flatbread kitchen. Started Saturday live music series on the patio. Hosted our first private event (a wedding rehearsal dinner for 45). Hired our first part-time employee.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2024</div>
+      <div>
+        <h3>Online Sales Launch</h3>
+        <p>Started shipping cans across Nova Scotia and PEI. Expanded to 12 beers on rotation. Winter Woods Imperial Stout released in limited 650ml bottles — sold out in 3 days. Added a second fermenter to keep up with demand.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2026</div>
+      <div>
+        <h3>Where We Are Now</h3>
+        <p>12 beers on rotation, shipping to NS and NB, taproom open year-round (Thu–Sun), and a hopyard that's finally producing enough to supply 40% of our hop needs. Still two people running everything. Still no investors. Still the same spring water.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <h2>Come See It for Yourself</h2>
+  <p>The best way to understand Walk in the Woods is to visit. Grab a flight, take the tour, and see where the beer is made.</p>
+  <a href="visit.html" class="btn">Plan Your Visit</a>
+  <a href="beers.html" class="btn btn-outline">Explore Our Beers</a>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2026 Walk in the Woods Brewing Co. All rights reserved. | Please drink responsibly. You must be 19+ to purchase.</p>
+</footer>
+
+</body>
+</html>

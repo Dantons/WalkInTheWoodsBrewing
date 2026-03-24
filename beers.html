@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Beers — Walk in the Woods Brewing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #1c1c1c; line-height: 1.6; background: #faf9f6; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+    .nav { background: #1a2e1a; padding: 16px 0; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'Playfair Display', serif; color: #c8a951; font-size: 20px; font-weight: 700; }
+    .nav-logo span { color: #d4d4c8; font-weight: 400; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: #b8b8a8; font-size: 15px; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #c8a951; }
+
+    .page-hero { background: linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 100%); color: #fff; padding: 64px 24px; text-align: center; }
+    .page-hero h1 { font-size: 44px; margin-bottom: 12px; }
+    .page-hero p { font-size: 18px; color: #b8c8a8; max-width: 600px; margin: 0 auto; }
+
+    .section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+    .category-title { font-size: 28px; margin-bottom: 8px; color: #1a2e1a; }
+    .category-desc { font-size: 15px; color: #666; margin-bottom: 32px; }
+
+    .beer-list { display: flex; flex-direction: column; gap: 24px; margin-bottom: 64px; }
+    .beer-item { background: #fff; border: 1px solid #e0ddd4; border-radius: 8px; padding: 28px 32px; display: grid; grid-template-columns: 60px 1fr auto; gap: 24px; align-items: center; }
+    .beer-icon { font-size: 40px; text-align: center; }
+    .beer-name { font-size: 20px; margin-bottom: 4px; color: #1a2e1a; }
+    .beer-type { font-size: 13px; color: #c8a951; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .beer-desc { font-size: 14px; color: #666; line-height: 1.7; }
+    .beer-meta { text-align: right; white-space: nowrap; }
+    .beer-abv { font-size: 22px; font-weight: 700; color: #1a2e1a; }
+    .beer-ibu { font-size: 13px; color: #999; }
+    .beer-price { font-size: 16px; font-weight: 600; color: #c8a951; margin-top: 8px; }
+
+    .order-banner { background: #1a2e1a; color: #fff; border-radius: 8px; padding: 40px; text-align: center; margin-top: 20px; }
+    .order-banner h2 { font-size: 28px; margin-bottom: 12px; }
+    .order-banner p { font-size: 15px; color: #b8c8a8; margin-bottom: 24px; }
+    .btn { display: inline-block; background: #c8a951; color: #1a2e1a; padding: 14px 32px; border-radius: 4px; font-weight: 700; font-size: 16px; transition: all 0.2s; border: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+    .btn:hover { background: #b89841; }
+
+    .footer { background: #0f1a0f; color: #777; padding: 32px 24px; text-align: center; font-size: 13px; }
+
+    @media (max-width: 768px) {
+      .beer-item { grid-template-columns: 1fr; text-align: center; }
+      .beer-meta { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Walk in the Woods <span>Brewing</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="beers.html" class="active">Our Beers</a>
+      <a href="visit.html">Visit Us</a>
+      <a href="about.html">Our Story</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <h1>Our Beers</h1>
+  <p>Everything we brew starts with highland spring water, organic grain, and hops we grow on our own south-facing slope. No filters, no preservatives, no nonsense.</p>
+</section>
+
+<section class="section">
+
+  <h2 class="category-title">Year-Round Brews</h2>
+  <p class="category-desc">The lineup that's always on tap and always in the cooler. These are the beers we built our name on.</p>
+
+  <div class="beer-list">
+    <div class="beer-item">
+      <div class="beer-icon">🍺</div>
+      <div>
+        <h3 class="beer-name">Trail Head IPA</h3>
+        <div class="beer-type">India Pale Ale</div>
+        <p class="beer-desc">West coast hops meet highland spring water. Citrus forward with a piney backbone that finishes clean and dry. Dry-hopped with Cascade and Centennial from our own hopyard.</p>
+      </div>
+      <div class="beer-meta">
+        <div class="beer-abv">6.2%</div>
+        <div class="beer-ibu">55 IBU</div>
+        <div class="beer-price">$5.25 / 473ml</div>
+      </div>
+    </div>
+
+    <div class="beer-item">
+      <div class="beer-icon">🌾</div>
+      <div>
+        <h3 class="beer-name">Morning Fog Lager</h3>
+        <div class="beer-type">Craft Lager</div>
+        <p class="beer-desc">Crisp, clean, and light as the mist rolling off Bras d'Or Lake at dawn. Brewed with organic Maritime barley and lagered for six weeks in our cold cellar. Our best-selling session beer.</p>
+      </div>
+      <div class="beer-meta">
+        <div class="beer-abv">4.6%</div>
+        <div class="beer-ibu">18 IBU</div>
+        <div class="beer-price">$4.50 / 473ml</div>
+      </div>
+    </div>
+
+    <div class="beer-item">
+      <div class="beer-icon">🍂</div>
+      <div>
+        <h3 class="beer-name">Deadfall Stout</h3>
+        <div class="beer-type">Oatmeal Stout</div>
+        <p class="beer-desc">Rich, velvety, and roasted with locally sourced oats from PEI. Notes of dark chocolate, coffee, and a hint of molasses. Best enjoyed by the wood stove on a cold Cape Breton evening.</p>
+      </div>
+      <div class="beer-meta">
+        <div class="beer-abv">5.8%</div>
+        <div class="beer-ibu">32 IBU</div>
+        <div class="beer-price">$5.50 / 473ml</div>
+      </div>
+    </div>
+
+    <div class="beer-item">
+      <div class="beer-icon">🫐</div>
+      <div>
+        <h3 class="beer-name">Berry Bramble Sour</h3>
+        <div class="beer-type">Wild Ale</div>
+        <p class="beer-desc">Tart, fruity, and refreshing. Brewed with wild blueberries foraged from our hillside and a touch of sea salt. Kettle-soured for a clean tang without the funk.</p>
+      </div>
+      <div class="beer-meta">
+        <div class="beer-abv">4.3%</div>
+        <div class="beer-ibu">8 IBU</div>
+        <div class="beer-price">$5.75 / 473ml</div>
+      </div>
+    </div>
+
+    <div class="beer-item">
+      <div class="beer-icon">🌿</div>
+      <div>
+        <h3 class="beer-name">Canopy Pale Ale</h3>
+        <div class="beer-type">American Pale Ale</div>
+        <p class="beer-desc">Balanced, approachable, and sessionable. Tropical fruit notes from Citra hops over a biscuity malt base. The gateway beer for friends who say they don't like craft beer.</p>
+      </div>
+      <div class="beer-meta">
+        <div class="beer-abv">5.0%</div>
+        <div class="beer-ibu">35 IBU</div>
+        <div class="beer-price">$5.00 / 473ml</div>
+      </div>
+    </div>
+
+    <div class="beer-item">
+      <div class="beer-icon">🌙</div>
+      <div>
+        <h3 class="beer-name">Nightcap Porter</h3>
+        <div class="beer-type">Robust Porter</div>
+        <p class="beer-desc">Smooth, malty, and warming. Brewed with organic chocolate malt and a touch of vanilla bean. Lower ABV than the stout — perfect for a second (or third) pint around the fire pit.</p>
+      </div>
+      <div class="beer-meta">
+        <div class="beer-abv">5.2%</div>
+        <div class="beer-ibu">28 IBU</div>
+        <div class="beer-price">$5.25 / 473ml</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="category-title">Seasonal & Limited Releases</h2>
+  <p class="category-desc">Small batches brewed when the season and the ingredients are right. Once they're gone, they're gone — until next year.</p>
+
+  <div class="beer-list">
+    <div class="beer-item">
+      <div class="beer-icon">🌲</div>
+      <div>
+        <h3 class="beer-name">Spruce Tip Saison</h3>
+        <div class="beer-type">Farmhouse Ale — Spring</div>
+        <p class="beer-desc">Brewed every May with fresh spruce tips harvested from our property. Bright, herbaceous, and slightly resinous with a dry peppery finish from Belgian yeast. A Walk in the Woods original.</p>
+      </div>
+      <div class="beer-meta">
+        <div class="beer-abv">6.8%</div>
+        <div class="beer-ibu">22 IBU</div>
+        <div class="beer-price">$6.50 / 473ml</div>
+      </div>
+    </div>
+
+    <div class="beer-item">
+      <div class="beer-icon">🍊</div>
+      <div>
+        <h3 class="beer-name">Bonfire Wheat</h3>
+        <div class="beer-type">Hefeweizen — Summer</div>
+        <p class="beer-desc">Hazy, bright, and banana-forward with clove undertones. Brewed with 60% organic wheat and a traditional Bavarian yeast strain. Best poured on the patio at sunset.</p>
+      </div>
+      <div class="beer-meta">
+        <div class="beer-abv">5.1%</div>
+        <div class="beer-ibu">14 IBU</div>
+        <div class="beer-price">$5.50 / 473ml</div>
+      </div>
+    </div>
+
+    <div class="beer-item">
+      <div class="beer-icon">🍎</div>
+      <div>
+        <h3 class="beer-name">Harvest Red</h3>
+        <div class="beer-type">Amber Ale — Autumn</div>
+        <p class="beer-desc">Malty, caramel-forward, and toasty. Brewed with Annapolis Valley apples and autumn spices. Released every September for Thanksgiving season.</p>
+      </div>
+      <div class="beer-meta">
+        <div class="beer-abv">5.5%</div>
+        <div class="beer-ibu">25 IBU</div>
+        <div class="beer-price">$5.75 / 473ml</div>
+      </div>
+    </div>
+
+    <div class="beer-item">
+      <div class="beer-icon">❄️</div>
+      <div>
+        <h3 class="beer-name">Winter Woods Imperial</h3>
+        <div class="beer-type">Imperial Stout — Winter</div>
+        <p class="beer-desc">Big, bold, and aged in bourbon barrels from a Nova Scotia distillery. Rich espresso, dark fruit, and oak char. Released in limited 650ml bottles every December.</p>
+      </div>
+      <div class="beer-meta">
+        <div class="beer-abv">9.2%</div>
+        <div class="beer-ibu">45 IBU</div>
+        <div class="beer-price">$8.50 / 650ml</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="category-title">Non-Alcoholic</h2>
+  <p class="category-desc">Same organic ingredients, same care — just without the buzz. Designated drivers and dry-January folks, we see you.</p>
+
+  <div class="beer-list">
+    <div class="beer-item">
+      <div class="beer-icon">🥤</div>
+      <div>
+        <h3 class="beer-name">Clear Trail</h3>
+        <div class="beer-type">Non-Alcoholic Pale Ale</div>
+        <p class="beer-desc">Hoppy, citrusy, and full-bodied despite the missing ABV. Brewed full-strength then gently dealcoholized to preserve flavour. You'd never know the difference.</p>
+      </div>
+      <div class="beer-meta">
+        <div class="beer-abv">&lt;0.5%</div>
+        <div class="beer-ibu">30 IBU</div>
+        <div class="beer-price">$4.25 / 473ml</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="order-banner">
+    <h2>Order Online — Shipped Fresh to Your Door</h2>
+    <p>Minimum order 12 cans (mix and match). Free shipping across Nova Scotia and New Brunswick. Packaged cold in insulated boxes within 24 hours of ordering.</p>
+    <a href="contact.html" class="btn">Place an Order</a>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <p>&copy; 2026 Walk in the Woods Brewing Co. All rights reserved. | Please drink responsibly. You must be 19+ to purchase.</p>
+</footer>
+
+</body>
+</html>
